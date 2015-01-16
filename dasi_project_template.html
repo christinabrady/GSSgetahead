@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Introduction:</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<!-- For more info on RMarkdown see http://rmarkdown.rstudio.com/ -->
+
+<!-- Enter the code required to load your data in the space below. The data will be loaded but the line of code won't show up in your write up (echo=FALSE) in order to save space-->
+
+<pre><code class="r">load(url(&quot;http://bit.ly/dasi_gss_data&quot;))
+library(ggplot2)
+</code></pre>
+
+<!-- In the remainder of the document, add R code chunks as needed -->
+
+<h3>Introduction:</h3>
+
+<p>The belief that if you work you, you will get ahead in life is a powerful narrative that shapes American culture. I suspect that this translates into a value, a belief in hard work as THE way to get ahead in life, that informs Americans&#39; opinions about policies as diverse as health care, foreign aid, taxes, public education, social security, and many others. For example, a person may be less likely to support welfare programs if he or she believes that people get ahead solely via their own hard work.  </p>
+
+<p>Opinions about policies are a component of political party affiliation in the United States, though they are not the only component, nor necessarily the determining factor. There is a sense that the Democrats support more social programming and &ldquo;help&rdquo; for poor and underpriveledged while the Republicans want to undermine these programs. Thus, I am interested in analyzing the interaction between the belief in hard work as the way to get ahead and political party affiliationin the U.S. </p>
+
+<h3>Data:</h3>
+
+<p>For this study, I will use the General Social Survey (GSS) data from 2012.  The GSS data includes information about people&#39;s opinions and sentiments regarding a number of different topics that are important to people living in the U.S. Each observation (case) represents one person who was interviewed, and the variables are the different values or opinions about which he or she was questioned.   </p>
+
+<p>The information is gathered through field interviews. Field interviewers conduct interviews that last about 1.5 hours at the homes of the respondents. The field interviewers are assigned to geographic areas and instructed to canvass or conduct interviews after 3pm on weekdays (Monday - Friday) or during weekends or holidays. They move from house to house attempting to interview people until they have completed interviews with a specific numbers of participants of different ages, sex and employment status. The interviewers conduct the interviews in English and Spanish with participants 18 years or older who are not living in institutional settings (military barracks, college dorms, nursing homes, etc.) The designers of the study set the quotas for each field interviewer and geographic location so that the proportions of respondents of different ages, sexes and employment statuses resemble the U.S. Census.  </p>
+
+<p>This is an observational study; therefore, it cannot estabilish causality. However, the participants are randomly sampled via blocking and the sample is large enough to make it generalizable to the population of interest: English and/or Spanish speaking population of the United States that is over 18 and not living in an institutional setting.  </p>
+
+<p>To analyze how the belief in hard work as a way to get ahead varies according to one&#39;s affiliation with a political party, I will use the variables &ldquo;getahead&rdquo; and &ldquo;partyid&rdquo;. For the purposes of this study, I will refer to the two variables as &ldquo;belief in hard work&rdquo;, and &ldquo;political party&rdquo; respectively.  </p>
+
+<p>In order to make the data more manageable, I have extracted only the two variables that I will be analyzing the 2012 GSS data using the following code. </p>
+
+<pre><code class="r">gss12 &lt;- subset(gss, gss$year==&quot;2012&quot;)
+gss12.1 &lt;- gss12[, c(29, 79)]
+</code></pre>
+
+<p>The citation for the GSS data is:<br/>
+Smith, Tom W., Michael Hout, and Peter V. Marsden. General Social Survey, 1972-2012 [Cumulative File]. ICPSR34802-v1. Storrs, CT: Roper Center for Public Opinion Research, University of Connecticut /Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributors], 2013-09-11. doi:10.3886/ICPSR34802.v1 Persistent URL: <a href="http://doi.org/10.3886/ICPSR34802.v1">http://doi.org/10.3886/ICPSR34802.v1</a> </p>
+
+<h3>Exploratory data analysis:</h3>
+
+<p>The GSS assesses the belief in hard work by asking the following question:   &ldquo;Some people say that people get ahead by their own hard work; others say that lucky breaks or help from other people are more important. Which do you think is most important?&rdquo;  The possible responses are:</p>
+
+<ul>
+<li>Hard Work</li>
+<li>Both equally</li>
+<li>Luck or help</li>
+<li>other</li>
+<li>Don&#39;t know</li>
+<li>NA</li>
+</ul>
+
+<p>The number and proportion of respondents who chose each response can be seen in the table below. The first column is the response. The second column is the total number of respondents who chose that response. The last column is the proportion of the total number of respondents who chose that reponse. </p>
+
+<pre><code class="r">getahead &lt;- as.data.frame(table(gss12.1$getahead))
+colnames(getahead)&lt;- c(&quot;Var1&quot;, &quot;Total&quot;)
+getahead2 &lt;- merge(getahead, as.data.frame(prop.table(table(gss12.1$getahead))))
+colnames(getahead2) &lt;- c(&quot;Response&quot;, &quot;Total&quot;, &quot;Proportion&quot;)
+getahead2
+</code></pre>
+
+<pre><code>##       Response Total Proportion
+## 1 Both Equally   264    0.20276
+## 2    Hard Work   910    0.69892
+## 3 Luck Or Help   128    0.09831
+## 4        Other     0    0.00000
+</code></pre>
+
+<p>Since none of the respondents chose &ldquo;Other&rdquo; or &ldquo;Don&#39;t Know&rdquo;, I have eliminated them from the data that I will be working with along with NA values.</p>
+
+<pre><code class="r">gss12.2 &lt;- droplevels(gss12.1)
+gss12.2 &lt;- na.omit(gss12.2)
+</code></pre>
+
+<p>The GSS assesses political party affiliation by asking, &ldquo;Generally speaking, do you usually think of yourself as a Republican, Democrat, Independent, or what?&rdquo;  The possible responses are:  </p>
+
+<ul>
+<li>Strong Democrat</li>
+<li>Not Strong Democrat</li>
+<li>Independent, near Dem</li>
+<li>Independent</li>
+<li>Independent, near Rep</li>
+<li>Not Strong Republican</li>
+<li>Strong Republican</li>
+<li>Other party</li>
+<li>Don&#39;t know</li>
+</ul>
+
+<p>Those same respondents chose the their political party affiliation in the following the following manner: </p>
+
+<pre><code class="r">party &lt;- as.data.frame(table(gss12.2$partyid))
+colnames(party)&lt;- c(&quot;Party&quot;, &quot;Total&quot;)
+party
+</code></pre>
+
+<pre><code>##                Party Total
+## 1    Strong Democrat   236
+## 2   Not Str Democrat   221
+## 3       Ind,Near Dem   141
+## 4        Independent   254
+## 5       Ind,Near Rep   105
+## 6 Not Str Republican   165
+## 7  Strong Republican   133
+## 8        Other Party    36
+</code></pre>
+
+<p>When we break the responses into their respective political party afilliation and compare the proportions of people who believe in &ldquo;hard work&rdquo;, &ldquo;both equally&rdquo;, or &ldquo;luck or help&rdquo; respectively, we can see a trend. If the two variables are independent, the proportion of people who choose &ldquo;Hard Work&rdquo; as the way to get ahead should not vary significantly from the overall proportions of 69.89%, 20.27% and 9.83% for &ldquo;Hard Work&rdquo;, &ldquo;Both Equally&rdquo;, and &ldquo;Luck or Help&rdquo; respectively.  </p>
+
+<pre><code class="r">df &lt;- as.data.frame(prop.table(table(gss12.2$partyid, gss12.2$getahead),1))
+colnames(df) &lt;- c(&quot;party&quot;, &quot;getahead&quot;, &quot;proportion&quot;)
+levels(df$party) &lt;- c(&quot;SD&quot;, &quot;NSD&quot;, &quot;ID&quot;, &quot;I&quot;, &quot;IR&quot;, &quot;NSR&quot;, &quot;SR&quot;, &quot;OTHER&quot;, &quot;DK&quot;)
+g &lt;- ggplot(df, aes(x=party, y=proportion, group=getahead, fill=getahead))+geom_bar(stat=&quot;identity&quot;)+scale_fill_brewer(palette=&quot;Spectral&quot;)
+g
+</code></pre>
+
+<p><img src="data:image/png;base64,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jh07uvl0JK9pFci1M6D00ksv2QknnGAtW7a0wYMH2+9///tgsYl+DhXg1cwyceJEt+emigyS9sxOO+204C3PCCCAAAIxE2jatKn16tXL/vCHP7gj62effdZd1KZmecWD//zP/3QB+q9//asLwg0bNnQBWufNJ0yYYEOHDrWf/vSn1rVr10rn2xX0lbSToKTlzZs3zzXrz5492332l7/8xQVvBX4dtb/xxhvu869+9avuVMDHH39szzzzjPuMP2ahAvzFF1/smly0ZxVUijAPO+wwTBFAAAEEYi5w66232qWXXuqOsrt37+5K+6UvfcmdM+/fv787P65megX3AQMG2G233ebO11900UXuCF4BW0fquriuuvSNb3zDHn74YWvfvr3bUVBz/FFHHeV2JrROvdZFeTo1oAv5dODZqVMnDjLTQLMO8LrCUbc16PxHsKeVtjxeIoAAAgjEXEC3tKmpfcSIETZy5Ehr166dK7EucPvtb3/rDvzUNK+knQHFi+Dc+OWXX+6a4hs02HsJWPqV82+//babT3/+53/+xzXzq+k9SMuWLXNN8y1atAg+cs9qptfpA7UwkD4T2CtcRxEF9VNPPdXuu+8+d6tCHWdjMgQQQACBmAjoaP2OO+5wV7i///77du2116ZKpgAbBPfgwyC4632zZs0sPbgH01T3nB7cg2kyg3vwOcE9kPjsOesAr9l04YSaRHSrg658DB46P0JCAAEEEIi3wPnnn28LFiwwXTS3aNEi6927d7wLHNHSZd1Er3LqAgldQZmZOAefKcJ7BBBAIF4C6c3p9SkZp3jro1e3eUMF+D59+rirJd977z3XTK8LHrJpcqlb1pgKAQQQQMA3AQXmsgmn1ztbjW95qt7LYAE1C4RqoldnArqFQYH9y1/+srv38K677qp5TXyLAAIIIIAAAgUTCBXgv/Od77hejNauXes6ItB9h2q2f+uttwqWcVaEAAIIIIAAAtULhGqiVyB/+umnrXHjxm7Jxx9/vLv/cf78+XbkkUdWvza+QQABBBBAAIGCCIQ6gtctEkEPQkEuX3jhhdS9kMFnPCOAAAIIIIBAcQRCBfjvfve7bvSg4cOH2xVXXOFGFdLtEmeddVZxSsFaEUAAAQQiKaCR5h588MFKede1XWFSMKpdMO/tt99ujzzySPDWTjzxRJs6dWrqvUap+8c//pF6X92L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" alt="plot of chunk unnamed-chunk-6"/> </p>
+
+<p>However, as we move from &ldquo;Strong Democrat&rdquo; to &ldquo;Not Strong Republican&rdquo; until we get to people who identify as &ldquo;Strong Republican&rdquo; or &ldquo;Other&rdquo;, the proportion of people who chose &ldquo;Hard Work&rdquo; as the way to get ahead gradually increases. This suggests that one&#39;s belief in hard work as the way to get ahead and one&#39;s political party affiliation are not independent. </p>
+
+<h3>Inference:</h3>
+
+<p>To test this hypothesis, it is important to state the null and alternative hypotheses. </p>
+
+<p>The null hypothesis, H0, is that belief in hard work and political party affiliation are independent. The proportion of people who believe in hard work as the primary way to get ahead should not vary across political party identification. Approximately 70% (69.89) of people surveyed should believe in &ldquo;hard work&rdquo;, 20% (20.28) should believe in &ldquo;both equally&rdquo;, 10% (9.83) should believe in &ldquo;luck or help&rdquo;.     </p>
+
+<p>The alternative hypothesis, HA, is that belief in hard work and political party affiliation are associated. Thus, the proportion of people who believe in &ldquo;hard work&rdquo; as the way to get ahead will differ according to political affiliation.  </p>
+
+<p>In order to assess the independence or association of two categorical values each with two or more levels, the chi-square is the most appropriate test. </p>
+
+<p>All of the conditions are met except one. Since this data is randomly sampled and less than 10% of the population, we can assume that the observations are independent. The degrees of freedom are (8-1)*(3-1)=14. 14 is greater than 1 so it meets the degrees of freedom condition. The unmet condition is that of each cell containing at least 5 expected counts. The following table shows the expected counts for each cell. </p>
+
+<pre><code class="r">tbl &lt;- table(gss12.2)
+expected &lt;- as.array(margin.table(tbl, 1)) %*% t(as.array(margin.table(tbl, 2)))/margin.table(tbl)
+expected
+</code></pre>
+
+<pre><code>##                     getahead
+## partyid              Hard Work Both Equally Luck Or Help
+##   Strong Democrat       164.52       48.077       23.399
+##   Not Str Democrat      154.07       45.022       21.912
+##   Ind,Near Dem           98.30       28.724       13.980
+##   Independent           177.07       51.744       25.184
+##   Ind,Near Rep           73.20       21.390       10.411
+##   Not Str Republican    115.03       33.613       16.359
+##   Strong Republican      92.72       27.095       13.187
+##   Other Party            25.10        7.334        3.569
+</code></pre>
+
+<p>Since &ldquo;Other Party&rdquo; is the only cell that does not meet the count requirement, and it only accounts for 2.8% of the population, I decided to run two chi-square tests. First, I will conduct a chi-square test on this data. Then, I will eliminate the &ldquo;Other Party&rdquo; category and conduct a second chi-square analysis on that data. </p>
+
+<p>The first chi-square test reports a p-value of 0.033 indicating that we can reject the null hypothesis. </p>
+
+<pre><code class="r">chisq.test(tbl)
+</code></pre>
+
+<pre><code>## Warning: Chi-squared approximation may be incorrect
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tbl
+## X-squared = 25.19, df = 14, p-value = 0.03274
+</code></pre>
+
+<p>I eliminated the &ldquo;Other Party&rdquo; category and calculated the expected counts via the following code:</p>
+
+<pre><code class="r">gss12.3 &lt;- subset(gss12.2, gss12.2$partyid != &quot;Other Party&quot;)
+gss12.3 &lt;- droplevels(gss12.3)
+tbl.2 &lt;- table(gss12.3)
+expected.2 &lt;- as.array(margin.table(tbl.2, 1)) %*% t(as.array(margin.table(tbl.2, 2)))/margin.table(tbl.2)
+expected.2
+</code></pre>
+
+<pre><code>##                     getahead
+## partyid              Hard Work Both Equally Luck Or Help
+##   Strong Democrat       165.29        47.58        23.13
+##   Not Str Democrat      154.79        44.55        21.66
+##   Ind,Near Dem           98.76        28.42        13.82
+##   Independent           177.90        51.20        24.89
+##   Ind,Near Rep           73.54        21.17        10.29
+##   Not Str Republican    115.57        33.26        16.17
+##   Strong Republican      93.15        26.81        13.04
+</code></pre>
+
+<p>The results of the chi-square test when I eliminate the &ldquo;Other Party&rdquo; category are as follows: </p>
+
+<pre><code class="r">chisq.test(tbl.2)
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tbl.2
+## X-squared = 23.09, df = 12, p-value = 0.02698
+</code></pre>
+
+<h3>Conclusion:</h3>
+
+<p>Since both p-values are smaller than the significance level, we can safely reject the null hypothesis that political party affiliation and the belief in hard work as the way to get ahead are independent. Since, the calculations take into consideration &ldquo;political party affiliation&rdquo; as an explanatory variable, it is safe to say that the belief in hard work as the way to get ahead is dependent, in part, on political party affiliation.   </p>
+
+<p>Further analyses may include one&#39;s belief in hard work as a function of income, gender, level of education, employment status or belief in hard work as an explanatory variable for support for foreign aid, affirmative action, and social programming, etc.</p>
+
+</body>
+
+</html>
+

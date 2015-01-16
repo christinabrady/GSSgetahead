@@ -1,0 +1,66 @@
+Belief in hard work 
+========================================================
+Introduction
+The belief in hard work as a way to improve one's standing in life is a long time "American" value. I am interested in how this value changes across different subsections of the population. For this study, I will use the General Social Survey (GSS) data from 2012 to analyze how the belief in hard work as a way to get ahead varies according to one's affiliation with a political party. For the purposes of this essay, I will refer to the two variables as "belief in hard work", and "political party" respectively. 
+
+The GSS assesses the belief in hard work by asking the following question:   "Some people say that people get ahead by their own hard work; others say that lucky breaks or help from other people are more important. Which do you think is most important?"  The possible responses are:
+
+- Hard Work
+- Both equally
+- Luck or help
+- other
+- Don't know
+- NA
+
+The breakdown of the 2012 respondents can be seen in the following table:
+```{r}
+load(url("http://bit.ly/dasi_gss_data"))
+gss12 <- subset(gss, gss$year=="2012")
+table(gss12$getahead)
+```
+The next table shows the same information as proportions of the total number of respondents:
+```{r}
+prop.table(table(gss12$getahead))
+```
+The GSS assesses political party affiliation by asking, "Generally speaking, do you usually think of yourself as a Republican, Democrat, Independent, or what?"  The possible responses are:  
+- Strong Democrat
+- Not Strong Democrat
+- Independent, near Dem
+- Independent
+- Independent, near Rep
+- Not Strong Republican
+- Strong Republican
+- Other party
+- Don't know
+
+The breakdown of 2012 respondents is as follows:
+```{r}
+table(ggss12$partyid)
+```
+As proportions of total respondents: 
+```{r}
+prop.table(table(gss12$partyid))
+```
+The null hypothesis, H0, is that there is no relationship between belief in political party affiliation and belief in hard work. The proportion of people who believe in hard work as the primary way to get ahead should be the same across political party identification. Approximately 70% (69.89) of people surveyed should believe in "hard work", 20% (20.28) should believe in "both equally", 10% (9.83) should believe in "luck or help".   
+
+The alternative hypothesis, HA, is that there is a relationship between political affiliation and belief in hard work. Thus, the proportion of people who believe in "hard work" as the way to get ahead will differ according to political affiliation. 
+
+##Exploratory Analysis
+A preliminary analysis suggests that there is a relationship between political affiliation and the belief in hard work, or that we might reject the null hypothesis in favor of the alternative hypothesis. 
+
+A frequency table showing the breakdown of the belief in hard work as a function of political party shows that people who identify as Strong Democrats, Not Strong Democrats and Independents Near Democrats are underrepresented amongst the people who believe in hard work as the way to get ahead (64.83%, 65.61% and 65.96%). Conversely, Independents Near Republicans, Not Strong Republicans and Strong Republicans are over represented amongst the people who believe in hard work (71.43%, 80.00%, and 76.69%). Similarly, people who identify as Democrats are overrepresented amongst the people who believe in "both equally" (23.73%, 23.08%, and 21.28%) and " luck or help" (11.44%, 11.31%, and 12.77%) while Republicans are underrepresented in these categories (both equally: 14.29%, 14.55%, and 16.54%; luck or help: 14.29%, 5.45%, and 6.77%). The following table shows how the two interact. 
+
+```{r}
+prop.table(table(gss12$partyid, gss12$getahead), 1)
+```
+```{r}
+library(ggplot2)
+bypartypropdf <- as.data.frame(prop.table(table(gss12$partyid, gss12$getahead),1))
+colnames(bypartypropdf) <- c("party", "getahead", "prop")
+g6 <- ggplot(bypartypropdf, aes(x=party, y=prop, group=getahead, color=getahead))+geom_bar(stat="identity")
+g6
+```
+
+Hypothesis Test
+Since this study is comparing two categorical variables and both variable have more than two levels, the chi-square independence test is the best statistical test to use. 
+
